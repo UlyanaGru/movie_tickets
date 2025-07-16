@@ -7,7 +7,7 @@
 user_1@contest.yandex.ru, 880111111111\
 user_1@contest.yandex.ru, 880222222222\
 user_2@contest.yandex.ru, 880222222222\
-user_3@contest.yandex.ru, 880333333333\
+user_3@contest.yandex.ru, 880333333333
 
 В этом примере адреса user_1@contest.yandex.ru, user_2@contest.yandex.ru и телефоны 880111111111, 880222222222 относятся к одному пользователю. А user_3@contest.yandex.ru и 880333333333 — к другому.
 
