@@ -22,5 +22,9 @@ user_3@contest.yandex.ru, 880333333333
 
 ### Ограничения
 
-Ограничение времени 1 с
+Ограничение времени 1 с\
 Ограничение памяти 64 МБ
+
+#### Немного полезных ссылок
+
+[Defaultdict в документации](https://docs.python.org/3/library/collections.html#collections.defaultdict)
