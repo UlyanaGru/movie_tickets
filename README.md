@@ -25,6 +25,9 @@ user_3@contest.yandex.ru, 880333333333
 Ограничение времени 1 с\
 Ограничение памяти 64 МБ
 
+- [ ] [Решение с использованием теории графов]()
+- [x] [Решение без использования теориия графов]()
+
 #### Немного полезных ссылок
 
 [Defaultdict в документации](https://docs.python.org/3/library/collections.html#collections.defaultdict)
