@@ -29,3 +29,9 @@ void solve() {
         }
     }
     file.close();
+
+    // Создаем отображения:
+    // email -> множество телефонов
+    unordered_map<string, unordered_set<string>> email_to_phones;
+    // phone -> множество email
+    unordered_map<string, unordered_set<string>> phone_to_emails;
