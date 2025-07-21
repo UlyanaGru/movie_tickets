@@ -16,3 +16,16 @@ void solve() {
         cerr << "Ошибка открытия файла" << endl;
         return;
     }
+
+    // Хранение всех строк файла
+    vector<string> lines;
+    string line;
+    
+    // Чтение файла построчно
+    while (getline(file, line)) {
+        // Пропускаем пустые строки
+        if (!line.empty()) {
+            lines.push_back(line);
+        }
+    }
+    file.close();
