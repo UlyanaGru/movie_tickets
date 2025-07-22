@@ -30,8 +30,25 @@ void solve() {
     }
     file.close();
 
-    // Создаем отображения:
-    // email -> множество телефонов
+    // Словари для хранения соответствий email->телефоны и телефон->emails
+    // Используем unordered_map для быстрого доступа
     unordered_map<string, unordered_set<string>> email_to_phones;
-    // phone -> множество email
     unordered_map<string, unordered_set<string>> phone_to_emails;
+    
+    // Парсим строки и заполняем словари
+    for (const auto& ln : lines) {
+        size_t pos = ln.find(',');
+        string email = ln.substr(0, pos);
+        // Удаляем пробелы в начале и конце
+        email.erase(0, email.find_first_not_of(" \t"));
+        email.erase(email.find_last_not_of(" \t") + 1);
+        
+        string phone = (pos != string::npos) ? ln.substr(pos + 1) : "";
+        phone.erase(0, phone.find_first_not_of(" \t"));
+        phone.erase(phone.find_last_not_of(" \t") + 1);
+        
+        if (!email.empty() && !phone.empty()) {
+            email_to_phones[email].insert(phone);
+            phone_to_emails[phone].insert(email);
+        }
+    }
