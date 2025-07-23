@@ -51,4 +51,38 @@ void solve() {
             phone_to_emails[phone].insert(email);  // Добавляем email к телефону
         }
     }
+    
+    // Поиск связанных компонентов (групп пользователей)
+    unordered_set<string> visited;  // Посещенные email/телефоны
+    vector<unordered_set<string>> groups;  // Все найденные группы
+    unordered_map<string, int> element_to_group;  // Элемент -> номер группы
+
+    // Обходим все email для поиска групп
+    for (const auto& email_entry : email_to_phones) {
+        const string& email = email_entry.first;
+        
+        // Если email еще не посещен
+        if (visited.find(email) == visited.end()) {
+            queue<string> q;  // Очередь для BFS-обхода
+            q.push(email);    // Начинаем с текущего email
+            unordered_set<string> current_group;  // Текущая группа
+            int group_num = groups.size();  // Номер новой группы
+
+            // BFS-обход связанных элементов
+            while (!q.empty()) {
+                string current = q.front();  // Берем первый элемент из очереди
+                q.pop();  // Удаляем его из очереди
+
+                // Если текущий элемент - email
+                if (email_to_phones.find(current) != email_to_phones.end()) {
+                    if (visited.find(current) == visited.end()) {
+                        current_group.insert(current);  // Добавляем в группу
+                        element_to_group[current] = group_num;  // Запоминаем группу
+                        visited.insert(current);  // Помечаем как посещенный
+                        
+                        // Добавляем все связанные телефоны в очередь
+                        for (const auto& phone : email_to_phones[current]) {
+                            q.push(phone);
+                        }
+                    }
 
