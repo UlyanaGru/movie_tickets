@@ -86,3 +86,22 @@ void solve() {
                         }
                     }
 
+                } else {  // Если текущий элемент - телефон
+                    if (visited.find(current) == visited.end()) {
+                        current_group.insert(current);
+                        element_to_group[current] = group_num;
+                        visited.insert(current);
+                        
+                        // Добавляем все связанные emails в очередь
+                        for (const auto& email : phone_to_emails[current]) {
+                            q.push(email);
+                        }
+                    }
+                }
+            }
+            
+            groups.push_back(current_group);  // Сохраняем найденную группу
+        }
+    }
+
+    
