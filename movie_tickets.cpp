@@ -17,38 +17,38 @@ void solve() {
         return;
     }
 
-    // Хранение всех строк файла
-    vector<string> lines;
-    string line;
-    
-    // Чтение файла построчно
+    vector<string> lines;  // Хранит все строки из файла
+    string line;           // Временная переменная для чтения строк
     while (getline(file, line)) {
-        // Пропускаем пустые строки
         if (!line.empty()) {
-            lines.push_back(line);
+            lines.push_back(line);  // Добавляем непустую строку в вектор
         }
     }
-    file.close();
+    file.close();  // Закрываем файл после чтения
 
-    // Словари для хранения соответствий email->телефоны и телефон->emails
-    // Используем unordered_map для быстрого доступа
+    // Создаем отображения email -> телефоны и телефон -> emails
     unordered_map<string, unordered_set<string>> email_to_phones;
     unordered_map<string, unordered_set<string>> phone_to_emails;
-    
-    // Парсим строки и заполняем словари
-    for (const auto& ln : lines) {
-        size_t pos = ln.find(',');
-        string email = ln.substr(0, pos);
-        // Удаляем пробелы в начале и конце
-        email.erase(0, email.find_first_not_of(" \t"));
-        email.erase(email.find_last_not_of(" \t") + 1);
+
+
+    // Обрабатываем каждую строку из файла
+    for (const auto& line : lines) {
+        size_t comma_pos = line.find(',');  // Позиция разделителя
+        string email = line.substr(0, comma_pos);  // Извлекаем email
         
-        string phone = (pos != string::npos) ? ln.substr(pos + 1) : "";
-        phone.erase(0, phone.find_first_not_of(" \t"));
-        phone.erase(phone.find_last_not_of(" \t") + 1);
+        // Удаляем пробелы из email
+        email.erase(remove_if(email.begin(), email.end(), ::isspace), email.end());
         
+        string phone;  // Будет хранить номер телефона
+        if (comma_pos != string::npos) {  // Если есть запятая (есть телефон)
+            phone = line.substr(comma_pos + 1);  // Извлекаем телефон
+            phone.erase(remove_if(phone.begin(), phone.end(), ::isspace), phone.end());
+        }
+
+        // Если и email и телефон не пустые, добавляем в отображения
         if (!email.empty() && !phone.empty()) {
-            email_to_phones[email].insert(phone);
-            phone_to_emails[phone].insert(email);
+            email_to_phones[email].insert(phone);  // Добавляем телефон к email
+            phone_to_emails[phone].insert(email);  // Добавляем email к телефону
         }
     }
+
