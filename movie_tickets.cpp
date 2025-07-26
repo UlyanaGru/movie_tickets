@@ -106,3 +106,36 @@ void solve() {
 
     // Подсчет транзакций для каждой группы
     vector<int> group_counts(groups.size(), 0);  // Счетчики для каждой группы
+   
+    // Проходим по всем строкам логов для подсчета
+    for (const auto& line : lines) {
+        size_t comma_pos = line.find(',');
+        string email = line.substr(0, comma_pos);
+        email.erase(remove_if(email.begin(), email.end(), ::isspace), email.end());
+        
+        string phone;
+        if (comma_pos != string::npos) {
+            phone = line.substr(comma_pos + 1);
+            phone.erase(remove_if(phone.begin(), phone.end(), ::isspace), phone.end());
+        }
+
+        // Увеличиваем счетчик группы для email или телефона
+        if (!email.empty() && element_to_group.find(email) != element_to_group.end()) {
+            group_counts[element_to_group[email]]++;
+        } else if (!phone.empty() && element_to_group.find(phone) != element_to_group.end()) {
+            group_counts[element_to_group[phone]]++;
+        }
+    }
+
+    // Находим и выводим максимальное количество транзакций
+    int max_count = 0;
+    if (!group_counts.empty()) {
+        max_count = *max_element(group_counts.begin(), group_counts.end());
+    }
+    cout << max_count << endl;
+}
+
+int main() {
+    solve();  // Запуск основной функции
+    return 0;
+}
