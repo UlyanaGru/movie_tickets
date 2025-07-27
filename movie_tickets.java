@@ -31,3 +31,12 @@ public class UserGroups {
             String[] parts = line.split(",");  // Разделяем по запятой
             String email = parts[0].trim();    // Email - первая часть
             String phone = parts.length > 1 ? parts[1].trim() : "";  // Телефон (если есть)
+
+            // Если и email и телефон не пустые
+            if (!email.isEmpty() && !phone.isEmpty()) {
+                // Добавляем телефон к email (вычислить если отсутствует)
+                emailToPhones.computeIfAbsent(email, k -> new HashSet<>()).add(phone);
+                // Добавляем email к телефону
+                phoneToEmails.computeIfAbsent(phone, k -> new HashSet<>()).add(email);
+            }
+        }
