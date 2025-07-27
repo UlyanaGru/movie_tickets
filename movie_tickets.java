@@ -22,4 +22,6 @@ public class UserGroups {
         }
 
 
-        
+        // Создаем отображения email -> телефоны и телефон -> emails
+        Map<String, Set<String>> emailToPhones = new HashMap<>();
+        Map<String, Set<String>> phoneToEmails = new HashMap<>();
