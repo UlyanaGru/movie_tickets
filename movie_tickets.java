@@ -25,3 +25,9 @@ public class UserGroups {
         // Создаем отображения email -> телефоны и телефон -> emails
         Map<String, Set<String>> emailToPhones = new HashMap<>();
         Map<String, Set<String>> phoneToEmails = new HashMap<>();
+
+        // Обрабатываем каждую строку логов
+        for (String line : lines) {
+            String[] parts = line.split(",");  // Разделяем по запятой
+            String email = parts[0].trim();    // Email - первая часть
+            String phone = parts.length > 1 ? parts[1].trim() : "";  // Телефон (если есть)
