@@ -25,8 +25,9 @@ user_3@contest.yandex.ru, 880333333333
 Ограничение времени 1 с\
 Ограничение памяти 64 МБ
 
-- [x] [Решение на Python](movie_tickets.py)
-- [ ] [Решение на C++]()
+- [x] [Решение на Python](https://github.com/UlyanaGru/movie_tickets/blob/main/movie_tickets.py)
+- [x] [Решение на C++](https://github.com/UlyanaGru/movie_tickets/blob/main/movie_tickets.cpp)
+- [ ] [Решение на Java]()
 
 _Не забудьте при проверке скачать файлик_ ↑
 
