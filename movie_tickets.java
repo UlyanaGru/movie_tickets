@@ -46,4 +46,12 @@ public class UserGroups {
         List<Set<String>> groups = new ArrayList<>();  // Все группы
         Map<String, Integer> elementToGroup = new HashMap<>();  // Элемент -> номер группы
 
-        
+        // Обходим все email для поиска групп
+        for (String email : emailToPhones.keySet()) {
+            if (!visited.contains(email)) {  // Если email еще не посещен
+                Queue<String> queue = new LinkedList<>();  // Очередь для BFS
+                queue.add(email);  // Начинаем с текущего email
+                Set<String> currentGroup = new HashSet<>();  // Текущая группа
+                int groupNum = groups.size();  // Номер новой группы
+
+                
