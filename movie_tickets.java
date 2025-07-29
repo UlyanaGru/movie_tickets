@@ -66,4 +66,18 @@ public class UserGroups {
                             visited.add(current);  // Помечаем как посещенный
                             queue.addAll(emailToPhones.get(current));  // Добавляем связанные телефоны
                         }
-                    } 
+                    } else {  // Если текущий элемент - телефон
+                        if (!visited.contains(current)) {
+                            currentGroup.add(current);
+                            elementToGroup.put(current, groupNum);
+                            visited.add(current);
+                            queue.addAll(phoneToEmails.get(current));  // Добавляем связанные emails
+                        }
+                    }
+                }
+
+                groups.add(currentGroup);  // Сохраняем найденную группу
+            }
+        }
+
+        
