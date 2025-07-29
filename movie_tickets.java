@@ -58,4 +58,12 @@ public class UserGroups {
                 while (!queue.isEmpty()) {
                     String current = queue.poll();  // Берем элемент из очереди
 
-                    
+                    // Если текущий элемент - email
+                    if (emailToPhones.containsKey(current)) {
+                        if (!visited.contains(current)) {
+                            currentGroup.add(current);  // Добавляем в группу
+                            elementToGroup.put(current, groupNum);  // Запоминаем группу
+                            visited.add(current);  // Помечаем как посещенный
+                            queue.addAll(emailToPhones.get(current));  // Добавляем связанные телефоны
+                        }
+                    } 
