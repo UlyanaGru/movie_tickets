@@ -54,4 +54,8 @@ public class UserGroups {
                 Set<String> currentGroup = new HashSet<>();  // Текущая группа
                 int groupNum = groups.size();  // Номер новой группы
 
-                
+                // BFS-обход связанных элементов
+                while (!queue.isEmpty()) {
+                    String current = queue.poll();  // Берем элемент из очереди
+
+                    
