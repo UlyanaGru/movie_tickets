@@ -40,3 +40,10 @@ public class UserGroups {
                 phoneToEmails.computeIfAbsent(phone, k -> new HashSet<>()).add(email);
             }
         }
+
+        // Поиск связанных компонентов (групп пользователей)
+        Set<String> visited = new HashSet<>();  // Посещенные элементы
+        List<Set<String>> groups = new ArrayList<>();  // Все группы
+        Map<String, Integer> elementToGroup = new HashMap<>();  // Элемент -> номер группы
+
+        
