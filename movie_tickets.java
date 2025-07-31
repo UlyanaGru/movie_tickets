@@ -96,3 +96,12 @@ public class UserGroups {
                 groupCounts[elementToGroup.get(phone)]++;
             }
         }
+
+        // Находим и выводим максимальное количество транзакций
+        int maxCount = 0;
+        if (groupCounts.length > 0) {
+            maxCount = Arrays.stream(groupCounts).max().getAsInt();
+        }
+        System.out.println(maxCount);
+    }
+}
