@@ -80,4 +80,19 @@ public class UserGroups {
             }
         }
 
-        
+        // Подсчет транзакций для каждой группы
+        int[] groupCounts = new int[groups.size()];  // Счетчики транзакций
+
+        // Проходим по всем строкам логов для подсчета
+        for (String line : lines) {
+            String[] parts = line.split(",");
+            String email = parts[0].trim();
+            String phone = parts.length > 1 ? parts[1].trim() : "";
+
+            // Увеличиваем счетчик группы для email или телефона
+            if (!email.isEmpty() && elementToGroup.containsKey(email)) {
+                groupCounts[elementToGroup.get(email)]++;
+            } else if (!phone.isEmpty() && elementToGroup.containsKey(phone)) {
+                groupCounts[elementToGroup.get(phone)]++;
+            }
+        }
