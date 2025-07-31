@@ -34,3 +34,35 @@ _Не забудьте при проверке скачать файлик_ ↑
 #### Немного полезных ссылок
 
 [Defaultdict в документации](https://docs.python.org/3/library/collections.html#collections.defaultdict)
+
+#### Переменные в решении
+
+lines - список строк из файла logs.csv
+
+email_to_phones / emailToPhones - отображение email → множество телефонов
+
+phone_to_emails / phoneToEmails - отображение телефон → множество emails
+
+visited - множество посещенных элементов (email/телефон)
+
+groups - список всех найденных групп пользователей
+
+element_to_group / elementToGroup - отображение элемента (email/телефон) на номер его группы
+
+group_counts / groupCounts - счетчики транзакций для каждой группы
+
+file.is_open() / try - проверка успешного открытия файла
+
+email.erase() / trim() - очистка строк от лишних пробелов
+
+email_to_phones[email].insert() / computeIfAbsent() - добавление связи email-телефон
+
+visited.find() == visited.end() / contains() - проверка посещения элемента
+
+queue.push() / add() - добавление элемента в очередь для BFS-обхода
+
+groups.push_back() / add() - добавление найденной группы в список
+
+group_counts[group_num]++ - инкремент счетчика транзакций группы
+
+max_element() / Arrays.stream().max() - поиск максимального значения
