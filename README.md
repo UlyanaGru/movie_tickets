@@ -27,7 +27,7 @@ user_3@contest.yandex.ru, 880333333333
 
 - [x] [Решение на Python](https://github.com/UlyanaGru/movie_tickets/blob/main/movie_tickets.py)
 - [x] [Решение на C++](https://github.com/UlyanaGru/movie_tickets/blob/main/movie_tickets.cpp)
-- [ ] [Решение на Java]()
+- [x] [Решение на Java](https://github.com/UlyanaGru/movie_tickets/blob/main/movie_tickets.java)
 
 _Не забудьте при проверке скачать файлик_ ↑
 
